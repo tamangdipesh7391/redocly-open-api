@@ -1,0 +1,173 @@
+get:
+  tags:
+    - Product
+  summary: Get all products
+  description: Returns all products from the system (both simple and configurable)
+  operationId: getProducts
+  parameters: 
+    - name: Connection
+      in: header
+      description: Connection
+      required: true
+      schema:
+        type: string
+        example: "keep-alive"
+    - name: Accept
+      in: header
+      description: Accept
+      required: true
+      schema:
+        type: string
+        example: "application/json"
+    - name: Content-Type
+      in: header
+      description: Content-Type
+      required: true
+      schema:
+        type: string
+        example: "application/json"
+    - name: website_id
+      in: query
+      description: Id of the website
+      required: true
+      schema:
+        type: integer
+        example: 1
+    - name: product_name
+      in: query
+      description: Name of the product
+      required: false
+      schema:
+        type: string
+        example: "North Face Jacket"
+    - name: sku
+      in: query
+      description: SKU of the product
+      required: false
+      schema:
+        type: string
+        example: "NFJ-001"
+    - name: status
+      in: query
+      description: Status of the product
+      required: false
+      schema:
+        type: boolean
+        example: true
+    - name: visibility
+      in: query
+      description: Visibility of the product
+      required: false
+      schema:
+        type: string
+        example: "Catalog, Search"
+    - name: type
+      in: query
+      description: Type of the product
+      required: false
+      schema:
+        type: string
+        example: "simple"
+    - name: price_from
+      in: query
+      description: Minimum price of the product
+      required: false
+      schema:
+        type: number
+        example: 100
+    - name: price_to
+      in: query
+      description: Maximum price of the product
+      required: false
+      schema:
+        type: number
+        example: 200
+    - name: id_from
+      in: query
+      description: Minimum id of the product
+      required: false
+      schema:
+        type: integer
+        example: 1
+    - name: id_to
+      in: query
+      description: Maximum id of the product
+      required: false
+      schema:
+        type: integer
+        example: 100
+    - name: show_variants
+      in: query
+      description: Show variants of the product
+      required: false
+      schema:
+        type: boolean
+        example: true
+    - name: sort_order
+      in: query
+      description: Sort order of the product
+      required: false
+      schema:
+        type: string
+        example: "asc"
+        enum:
+          - asc
+          - desc
+  responses:
+    200:
+      description: Prodcut list fetched successfully
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '../../components/schemas/Product.yaml'
+        application/xml:
+          schema:
+            items:
+              $ref: '../../components/schemas/Product.yaml'
+    400:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'
+    # 500:
+    #   description: Internal Server Error
+    #   content:
+    #     application/json:
+    #       schema:
+    #         $ref: '../../components/schemas/Error.yaml'
+    # 503:
+    #   description: Service Unavailable
+    #   content:
+    #     application/json:
+    #       schema:
+    #         $ref: '../../components/schemas/Error.yaml'
+post:
+  tags:
+    -  Product
+  summary: Create a new product
+  description: Creates a new product in the store
+  operationId: createProduct
+  requestBody:
+    description: Product object that needs to be added to the store
+    required: true
+    content: 
+      application/json:
+        schema:
+          type: object
+          $ref: '../../components/schemas/addProduct.yaml'
+  responses:
+    200:
+      description: Successfully created product
+      content: 
+        application/json:
+          schema:
+            type: object
+            $ref: '../../components/schemas/createProductResponse.yaml'
+    400:
+      description: Bad Request
+      content: 
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'

@@ -1,0 +1,82 @@
+properties:
+  website_id:
+    type: integer
+    example: 1
+  attribute_set_id:
+    type: integer
+    example: 2
+  attributes:
+    type: array
+    example:
+      attribute_slug:
+        name: North Face Jacket
+        sku: NFJ-001
+        price: 100.00
+        cost: 50.00
+        special_price: 90.00
+        special_from_date: 2020-01-01
+        special_to_date: 2020-01-31
+        quantity_and_stock_status: 1
+        has_weight: 3
+        weight: 1.00
+        visibility: 4
+        tax_class_id: 2
+        category_ids: 1
+        new_from_date: 2020-01-01
+        new_to_date: 2020-01-31
+        description: "North Face Jacket"
+        short_description: "North Face Jacket"
+        url_key: "north-face-jacket"
+        meta_title: "North Face Jacket"
+        meta_description: "North Face Jacket"
+        meta_keyword: "North Face Jacket"
+        status: 1
+        color: 11
+        gallery:
+          type:
+            - base_image
+            - small_image
+            - thumbnail
+            - section_background_image
+            - gallery
+          background_color:
+            - "#ffffff"
+            - "#000000"
+          position:
+            - 1
+            - 2
+        size: 14
+        component:
+          component: banner
+          position: 1
+          attrubutes:
+            top-image: top-img-name
+            left-image: left-img-name
+            right-image: right-img-name
+            padding-top: 1.2
+            padding-bottom: 1.2
+            css-class: class-name
+            background-type: video
+            video-type: youtube
+            video-link: https://www.youtube.com/watch?v=Q8TXgCzxEnw
+            buttons:
+              button-link:
+                - https://example.com
+                - https://example.com
+              button-color:
+                - red
+                - blue
+              button-image:
+                - img-name
+                - img-name
+            has-overlay: 1
+          background-size: cover
+          image-background-color: "#ffffff"
+          file: file-name
+          small-image: small-img-name
+      catalog_inventory:
+        type: array
+        example:
+          quantity: 100
+          use_config_manage_stock: 1
+          manage_stock: 1

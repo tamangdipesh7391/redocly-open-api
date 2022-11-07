@@ -1,0 +1,44 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 1
+  name:
+    type: string
+    example: "North Face Jacket"
+  type:
+    type: string
+    example: "simple"
+  sku:
+    type: string
+    example: "NFJ-001"
+  parent_id:
+    type: integer
+    example: 12
+  stock:
+    type: integer
+    example: 100
+  status:
+    type: boolean
+    example: true
+  category:
+    type: array
+    example:
+      -id: 1
+      category_id: 1
+      scope: "store"
+      scope_id: 1
+      attribute: "name"
+      value: "Jackets"
+      created_at: "2020-01-01 00:00:00"
+      updated_at: "2020-01-01 00:00:00"
+  visibility:
+    type: string
+    example: "Catalog, Search"
+  image:
+    type: string
+    example: "https://example.com/image.jpg"
+  created_at:
+    type: string
+    example: "2020-01-01 00:00:00"
+

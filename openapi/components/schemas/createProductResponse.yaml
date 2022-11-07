@@ -1,0 +1,17 @@
+properties:
+  id:
+    type: integer
+    example: 1
+  sku:
+    type: string
+    example: "NFJ-001"
+  type:
+    type: string
+    example: "simple"
+  status:
+    type: boolean
+    example: true
+  created_at:
+    type: string
+    example: "2020-01-01 00:00:00"
+      

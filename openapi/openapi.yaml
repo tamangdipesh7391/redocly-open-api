@@ -1,55 +1,34 @@
 openapi: 3.1.0
 info:
   version: 1.0.0
-  title: Example.com
-  termsOfService: 'https://example.com/terms/'
+  title: OpenAPI Documentation
+  description: This is the OpenAPI documentation for the API.
+  termsOfService: http://swagger.io/terms/
   contact:
-    email: contact@example.com
-    url: 'http://example.com/contact'
+    name: Dipesh Hazesoft
+    url: https://www.hazesoft.com
+    email: dipesh@gmail.com
   license:
     name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-  x-logo:
-    url: 'https://redocly.github.io/openapi-template/logo.png'
-  description:
-    $ref: ./info-description.md
-tags:
-  - name: Echo
-    description: Example echo operations.
-  - name: User
-    description: Operations about users.
-  - name: Tag
-    description: This is a tag description.
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
 servers:
-  - url: 'https://{tenant}/api/v1'
-    variables:
-      tenant:
-        default: www
-        description: Your tenant id
-  - url: 'https://example.com/api/v1'
+  - url: http://localhost:8080
+    description: Development server
+  - url: http://localhost:8000
+    description: Production server
+security: 
+  -  jwt_auth: []
 paths:
-  '/users/{username}':
-    $ref: 'paths/users_{username}.yaml'
-  /echo:
-    $ref: paths/echo.yaml
-  /pathItem:
-    $ref: paths/path-item.yaml
-  /pathItemWithExamples:
-    $ref: paths/path-item-with-examples.yaml
+  /products:
+    $ref: 'paths\products\products.yaml'
+  /product/{id}:
+    $ref: 'paths\products\product_{id}.yaml'
 components:
   securitySchemes:
-    main_auth:
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: 'http://example.com/api/oauth/dialog'
-          scopes:
-            'read:users': read users info
-            'write:users': modify or remove users
-    api_key:
-      type: apiKey
-      in: header
-      name: api_key
-    basic_auth:
-      type: http
-      scheme: basic
+    jwt_auth:
+        type: http
+        scheme: bearer
+        description: JWT Authorization header using the Bearer scheme.
+        bearerFormat: JWT
+        

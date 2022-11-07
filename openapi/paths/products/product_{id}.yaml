@@ -1,0 +1,52 @@
+get: 
+  tags: 
+    -  Product
+  summary: Get product by ID
+  description: Returns a product based on a single ID
+  operationId: getProductById
+  security: 
+    -  jwt_auth: []
+  parameters: 
+    - name: id
+      in: path
+      description: ID of product to return
+      required: true
+      schema:
+        type: integer
+        example: 1
+  responses:
+    200:
+      description: Successfully fetched product
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Product.yaml'
+    400:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'
+put:
+  tags:
+    -  Product
+  description: Update an existing product
+  operationId: updateProduct
+  security: 
+    -  jwt_auth: []
+  summary: Update product by ID
+  parameters:
+    - name: id
+      in: path
+      description: ID of product to return
+      required: true
+      schema:
+        type: integer
+        example: 1
+  requestBody:
+      description: Product object that needs to be updated to the store
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/addProduct.yaml'
